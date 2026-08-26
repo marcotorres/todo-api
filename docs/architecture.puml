@@ -1,0 +1,66 @@
+@startuml TaskFlow - Deployment Diagram
+
+skinparam backgroundColor #FEFEFE
+skinparam node {
+    BackgroundColor #E3F2FD
+    BorderColor #1976D2
+}
+skinparam database {
+    BackgroundColor #FFF3E0
+    BorderColor #FF9800
+}
+skinparam cloud {
+    BackgroundColor #E8F5E9
+    BorderColor #4CAF50
+}
+
+title TaskFlow - Deployment Diagram\nFirebase Cloud Architecture
+
+actor "User" as User #FFE082
+
+cloud "Firebase Cloud" as Firebase {
+    
+    node "Firebase Hosting" as Hosting #BBDEFB {
+        artifact "Angular 19 SPA" as Frontend {
+        }
+    }
+    
+    node "Cloud Functions" as Functions #C8E6C9 {
+        artifact "Express 5 API" as Backend {
+        }
+    }
+    
+    database "Cloud Firestore" as Firestore #FFE0B2 {
+    }
+}
+
+cloud "Google Services" as Google #F5F5F5 {
+    node "reCAPTCHA" as Recaptcha
+}
+
+' Relationships
+User --> Hosting : HTTPS
+Hosting --> Functions : REST API\n(JWT Auth)
+Functions --> Firestore : Read/Write
+Frontend ..> Recaptcha : Token validation
+Backend ..> Recaptcha : Token verification
+
+note right of Frontend
+  **Frontend Stack**
+  Angular 19 + Material
+  TailwindCSS + CASL
+end note
+
+note right of Backend
+  **Backend Stack**
+  Express 5 + TypeScript
+  Clean Architecture
+end note
+
+note bottom of Firestore
+  **Collections**
+  - users
+  - tasks
+end note
+
+@enduml

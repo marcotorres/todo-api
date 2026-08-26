@@ -1,0 +1,403 @@
+type: collection.insomnia.rest/5.0
+schema_version: "5.1"
+name: Todo API
+meta:
+  id: wrk_fc064c9a727a49668186ae535e568480
+  created: 1769932049700
+  modified: 1769932049700
+  description: ""
+collection:
+  - url: "{{ _.BASE_URL }}"
+    name: Get API Info
+    meta:
+      id: req_2791667129394ac89311c6ab91a03c7c
+      created: 1769932081614
+      modified: 1769933640127
+      isPrivate: false
+      description: ""
+      sortKey: -1769932081614
+    method: GET
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - name: User
+    meta:
+      id: fld_84d7f88d1df44b84b7cef5d8bfd1b1d6
+      created: 1769932452731
+      modified: 1769932452731
+      sortKey: -1769932452731
+      description: ""
+    children:
+      - url: "{{ _.BASE_URL }}/users/login"
+        name: Login
+        meta:
+          id: req_ce444f968aab478dac4ea3914b466e4a
+          created: 1769935867728
+          modified: 1770024971642
+          isPrivate: false
+          description: ""
+          sortKey: -1769932475583
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"email": "test@example.com"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.BASE_URL }}/users"
+        name: Create User Full
+        meta:
+          id: req_57b1ab77c7e44b898bcd0857508bdb1e
+          created: 1770005724439
+          modified: 1770005794088
+          isPrivate: false
+          description: ""
+          sortKey: -1769932475683
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"email": "test@example.com",
+            	"name": "John",
+            	"lastname": "Doe",
+            	"phone": "+1234567890",
+            	"birthDate": "1990-01-15",
+            	"gender": "male",
+            	"country": "US",
+            	"termsAccepted": true,
+            	"privacyPolicyAccepted": true,
+            	"notificationPreferences": {
+            		"email": true,
+            		"sms": false,
+            		"push": true
+            	}
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.BASE_URL }}/users"
+        name: Create User Minimal
+        meta:
+          id: req_a982f3e8722243ac9ca17a6f75337aab
+          created: 1770005832340
+          modified: 1770025008533
+          isPrivate: false
+          description: ""
+          sortKey: -1769932475633
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+                "email": "test@exam.com",
+                "name": "John",
+                "lastname": "Doe",
+                "termsAccepted": true,
+                "privacyPolicyAccepted": true,
+                "notificationPreferences": {
+                  "email": true,
+                  "sms": false,
+                  "push": false
+                }
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.BASE_URL }}/users"
+        name: Update User
+        meta:
+          id: req_6de867b466f945dbafc3a175b5fc5575
+          created: 1770011233259
+          modified: 1770025667528
+          isPrivate: false
+          description: ""
+          sortKey: -1769932475783
+        method: PATCH
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"name": "Marco",
+            	"lastname": "Torres",
+            	"phone": "993 820 992"
+            }
+        headers:
+          - name: Accept
+            value: application/json, text/plain, */*
+          - name: Accept-Language
+            value: en-US,en;q=0.9,es;q=0.8
+          - name: Connection
+            value: keep-alive
+          - name: Content-Type
+            value: application/json
+          - name: Origin
+            value: http://localhost:4200
+          - name: Referer
+            value: http://localhost:4200/
+          - name: Sec-Fetch-Dest
+            value: empty
+          - name: Sec-Fetch-Mode
+            value: cors
+          - name: Sec-Fetch-Site
+            value: cross-site
+          - name: User-Agent
+            value: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko)
+              Chrome/144.0.0.0 Safari/537.36
+          - name: sec-ch-ua
+            value: '"Not(A:Brand";v="8", "Chromium";v="144", "Google Chrome";v="144"'
+          - name: sec-ch-ua-mobile
+            value: ?0
+          - name: sec-ch-ua-platform
+            value: '"Linux"'
+        authentication:
+          type: bearer
+          disabled: false
+          token: "{{ _.TOKEN }}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: Task
+    meta:
+      id: fld_c2c05a8f46fa44d399bbfb03d8eb7fd2
+      created: 1769932539734
+      modified: 1769932947214
+      sortKey: -1769932539734
+      description: ""
+    children:
+      - url: "{{ _.BASE_URL }}/tasks"
+        name: Get All Tasks
+        meta:
+          id: req_2a7dbd23f0a341b985c0c1292a121215
+          created: 1769932577289
+          modified: 1770025794682
+          isPrivate: false
+          description: ""
+          sortKey: -1769932955889
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/12.3.0
+            description: ""
+            disabled: false
+        authentication:
+          type: bearer
+          token: "{{ _.TOKEN }}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.BASE_URL }}/tasks"
+        name: Create New Task
+        meta:
+          id: req_e3f542f7ccd64a4597ae7d6b41560fa7
+          created: 1769932932094
+          modified: 1770025720849
+          isPrivate: false
+          description: ""
+          sortKey: -1769932955789
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"title": "My first task",
+            	"description": "Task description",
+            	"userId": "USER_ID_HERE"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+        authentication:
+          type: bearer
+          token: "{{ _.TOKEN }}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.BASE_URL }}/tasks/xHu6eQTbUtt719m2Bddw"
+        name: Update a Task
+        meta:
+          id: req_646bdc31116549caa5f2059d0246a04c
+          created: 1769933168896
+          modified: 1770025797168
+          isPrivate: false
+          description: ""
+          sortKey: -1769932955989
+        method: PUT
+        body:
+          mimeType: application/json
+          text: '{"title": "Updated task", "completed": true}'
+        headers:
+          - name: Content-Type
+            value: application/json
+        authentication:
+          type: bearer
+          token: "{{ _.TOKEN }}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.BASE_URL }}/tasks/xHu6eQTbUtt719m2Bddw"
+        name: Delete a Task
+        meta:
+          id: req_727d9f9df4bd4341a5dfcac377be4773
+          created: 1769933206546
+          modified: 1770025804388
+          isPrivate: false
+          description: ""
+          sortKey: -1769932956089
+        method: DELETE
+        authentication:
+          type: bearer
+          token: "{{ _.TOKEN }}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.BASE_URL }}/tasks/xHu6eQTbUtt719m2Bddw"
+        name: Completed task
+        meta:
+          id: req_fa4b48b07a5d4d348c56c2308b5326dc
+          created: 1770009059901
+          modified: 1770025809254
+          isPrivate: false
+          description: ""
+          sortKey: -1769932956189
+        method: PATCH
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"completed": true
+            }
+        headers:
+          - name: Accept
+            value: application/json, text/plain, */*
+          - name: Accept-Language
+            value: en-US,en;q=0.9,es;q=0.8
+          - name: Connection
+            value: keep-alive
+          - name: Content-Type
+            value: application/json
+          - name: Origin
+            value: http://localhost:4200
+          - name: Referer
+            value: http://localhost:4200/
+          - name: Sec-Fetch-Dest
+            value: empty
+          - name: Sec-Fetch-Mode
+            value: cors
+          - name: Sec-Fetch-Site
+            value: cross-site
+          - name: User-Agent
+            value: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko)
+              Chrome/144.0.0.0 Safari/537.36
+          - name: sec-ch-ua
+            value: '"Not(A:Brand";v="8", "Chromium";v="144", "Google Chrome";v="144"'
+          - name: sec-ch-ua-mobile
+            value: ?0
+          - name: sec-ch-ua-platform
+            value: '"Linux"'
+        authentication:
+          type: bearer
+          token: "{{ _.TOKEN }}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_06acf167118aa95d8b2199db845d50e549f62b7a
+    created: 1769932049705
+    modified: 1769932049705
+environments:
+  name: Base Environment
+  meta:
+    id: env_06acf167118aa95d8b2199db845d50e549f62b7a
+    created: 1769932049704
+    modified: 1769933477560
+    isPrivate: false
+  subEnvironments:
+    - name: Local
+      meta:
+        id: env_4a3b789224ea4f5f9f18ed9052d6bd24
+        created: 1769933504140
+        modified: 1770025628785
+        isPrivate: false
+        sortKey: 1769933504140
+      data:
+        BASE_URL: http://127.0.0.1:5001/todo-aa181/us-central1/api
+        TOKEN: "{% response 'body', 'req_ce444f968aab478dac4ea3914b466e4a',
+          'b64::JC5kYXRhLnRva2Vu::46b', 'never', 60 %}"
+      color: "#499b12"
+    - name: Staging
+      meta:
+        id: env_d244796c9b114a319e87e66577092a73
+        created: 1770025819239
+        modified: 1770026912074
+        isPrivate: false
+        sortKey: 1769933504190
+      data:
+        BASE_URL: https://us-central1-todo-aa181.cloudfunctions.net/api
+        TOKEN: "{% response 'body', 'req_ce444f968aab478dac4ea3914b466e4a',
+          'b64::JC5kYXRhLnRva2Vu::46b', 'never', 60 %}"
+      color: "#2359d7"
