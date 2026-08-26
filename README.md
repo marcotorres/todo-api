@@ -14,7 +14,7 @@ Task management REST API built with **Express 5**, **TypeScript**, **Clean Archi
 
 1. Clone the repository:
 ```bash
-git clone https://bitbucket.org/atomchat-challenge/todo-api.git
+git clone https://github.com/marcotorres/todo-api.git
 cd todo-api
 ```
 
